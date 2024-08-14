@@ -7,6 +7,7 @@ import {
   createUsuariosSuperAdminRequest,
   updateUsuariosRequest,
   getIdUsuariosRequest,
+  logoutRequest
 } from "../Api/Autentificacion";
 import Cookies from "js-cookie";
 import { Spiner } from "../components/Spiner";
@@ -228,8 +229,8 @@ export const AuthProvider = ({ children }) => {
     }
   }, [error]);
 
-  const logout = () => {
-    Cookies.remove("token");
+  const logout = async () => {
+    await logoutRequest()
     setisAutenticated(false);
     setUsuarios(null);
   };
